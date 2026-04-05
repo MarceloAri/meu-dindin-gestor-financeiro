@@ -1,0 +1,23 @@
+{
+  "name": "GestorFinanceiro",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "mounts": [
+    "source=gestor_financeiro_node_modules,target=/app/node_modules,type=volume"
+  ],
+  "postCreateCommand": "npm install || npm ci",
+  "customizations": {
+    "vscode": {
+      "extensions": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+    }
+  }
+}
